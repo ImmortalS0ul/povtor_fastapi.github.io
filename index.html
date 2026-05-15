@@ -525,6 +525,7 @@ def repeat(word: str, count: int = 1):
     <p>В этой теме рассматривается, как сервер принимает JSON-данные и проверяет их через Pydantic-модель.</p>
 
     <h3>Пример кода</h3>
+    model.py
     <pre><code>from pydantic import BaseModel
 
 class Pet(BaseModel):
@@ -539,7 +540,9 @@ class User(BaseModel):
     is_teacher: bool
     has_dog: bool
     pets: list[Pet]
-
+</code></pre>
+    app.py
+<pre><code>
 @app.post("/new_user")
 def new_user(user: User):
     return f"Тебя зовут {user.name}, тебе {user.age} лет и у ученика {len(user.pets)} домашних питомцев"</code></pre>
@@ -557,13 +560,16 @@ def new_user(user: User):
     </ul>
 
     <h3>Дополнительный пример</h3>
+    model.py
     <pre><code>from pydantic import BaseModel
 
 class Product(BaseModel):
     title: str
     price: int
     tags: list[str]
-
+</code></pre>
+    app.py
+    <pre><code>
 @app.post("/product")
 def create_product(product: Product):
     return {
@@ -810,8 +816,9 @@ def create_product(product: Product):
     @app.get("/contacts")
     def contacts(request: Request):
         return html.TemplateResponse(request, "contacts.html")
-    
+    </code></pre>
     # файл html/contacts.html:
+    <pre><code>
     # &lt;!doctype html&gt;
     # &lt;html&gt;&lt;body&gt;&lt;h1&gt;Контакты&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
     
@@ -855,7 +862,9 @@ def create_product(product: Product):
             "cat_names": ["Барсик", "Мурзик", "Кузя"],
             "want_cat": True
         })
-    
+   </code></pre>
+    index.html
+            <pre><code>
     &lt;!DOCTYPE html&gt;
     &lt;html lang="en"&gt;
     &lt;head&gt;
@@ -899,7 +908,9 @@ def create_product(product: Product):
             "marks": [5, 4, 5, 3],
             "show_result": True
         })
-    
+    </code></pre>
+    html/marks.html
+    <pre><code>
     # html/marks.html
     # &lt;h1&gt;{{ title }}&lt;/h1&gt;
     # &lt;p&gt;Ученик: {{ student }}&lt;/p&gt;
@@ -946,6 +957,7 @@ def create_product(product: Product):
             <p>В этой теме страница начинает вести себя динамически: HTML меняется в зависимости от данных.</p>
         
             <h3>Пример кода</h3>
+        app.py
             <pre><code>from fastapi import FastAPI, Request
         from fastapi.templating import Jinja2Templates
         
@@ -976,7 +988,9 @@ def create_product(product: Product):
                 "mark": 4,
                 "students": students
             })
-        
+                </code></pre>
+        index.html
+        <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
         &lt;head&gt;
@@ -1027,7 +1041,9 @@ def create_product(product: Product):
                 {"name": "Игорь", "mark": 4}
             ]
             return html.TemplateResponse(request, "group.html", {"pupils": pupils})
-        
+                </code></pre>
+    html/group.html
+        <pre><code>
         # html/group.html
         # &lt;ul&gt;
         # {% for pupil in pupils %}
@@ -1093,7 +1109,9 @@ def create_product(product: Product):
                 "cats": cats,
                 "want_cat": want_cat == "yes"
             })
-        
+                </code></pre>
+    form.html
+        <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
         &lt;head&gt;
@@ -1110,7 +1128,9 @@ def create_product(product: Product):
               &lt;/form&gt;
         &lt;/body&gt;
         &lt;/html&gt;
-        
+         </code></pre>
+    index.html
+        <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
         &lt;head&gt;
@@ -1163,7 +1183,9 @@ def create_product(product: Product):
                 "rating": rating,
                 "good": rating >= 4
             })
-        
+                <pre><code>
+                    feedback.html
+        </code></pre>
         # feedback.html
         # &lt;form action="/feedback" method="post"&gt;
         #     Имя: &lt;input name="username"&gt;
@@ -1254,7 +1276,10 @@ def create_product(product: Product):
         def delete(index: int):
             kids.pop(index)
             return RedirectResponse("/")
-        
+          </code></pre>
+    form.html
+        <pre><code>
+            
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
         &lt;head&gt;
@@ -1271,7 +1296,9 @@ def create_product(product: Product):
         &lt;/form&gt;
         &lt;/body&gt;
         &lt;/html&gt;
-        
+         </code></pre>
+    index.html
+        <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
         &lt;head&gt;
@@ -1401,7 +1428,9 @@ def create_product(product: Product):
             response.set_cookie(key="username", value=username)
             response.set_cookie(key="color", value=color)
             return response
-        
+         </code></pre>
+    index.html
+        <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
         &lt;head&gt;
@@ -1453,7 +1482,9 @@ def create_product(product: Product):
             response = RedirectResponse("/", status_code=302)
             response.set_cookie("language", language)
             return response
-        
+         </code></pre>
+    index.html
+        <pre><code>
         # HTML:
         # Ваш язык: {{ language }}
         # &lt;form action="/language" method="post"&gt;
@@ -1547,7 +1578,9 @@ def create_product(product: Product):
                 response = RedirectResponse("/", status_code=302)
                 response.set_cookie("login", login)
                 return response
-            
+             </code></pre>
+    index.html
+        <pre><code>
             &lt;!DOCTYPE html&gt;
             &lt;html lang="en"&gt;
             &lt;head&gt;
@@ -1564,7 +1597,9 @@ def create_product(product: Product):
             {% endif %}
             &lt;/body&gt;
             &lt;/html&gt;
-            
+             </code></pre>
+    login.html
+        <pre><code>
             &lt;!DOCTYPE html&gt;
             &lt;html lang="en"&gt;
             &lt;head&gt;
@@ -1579,7 +1614,9 @@ def create_product(product: Product):
             &lt;/form&gt;
             &lt;/body&gt;
             &lt;/html&gt;
-            
+             </code></pre>
+    register.html
+        <pre><code>
             &lt;!DOCTYPE html&gt;
             &lt;html lang="en"&gt;
             &lt;head&gt;
