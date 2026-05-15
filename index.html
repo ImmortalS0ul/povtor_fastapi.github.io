@@ -525,7 +525,7 @@ def repeat(word: str, count: int = 1):
     <p>В этой теме рассматривается, как сервер принимает JSON-данные и проверяет их через Pydantic-модель.</p>
 
     <h3>Пример кода</h3>
-    model.py
+    <h3>model.py</h3>
     <pre><code>from pydantic import BaseModel
 
 class Pet(BaseModel):
@@ -541,7 +541,7 @@ class User(BaseModel):
     has_dog: bool
     pets: list[Pet]
 </code></pre>
-    app.py
+    <h3>app.py</h3>
 <pre><code>
 @app.post("/new_user")
 def new_user(user: User):
@@ -560,7 +560,7 @@ def new_user(user: User):
     </ul>
 
     <h3>Дополнительный пример</h3>
-    model.py
+    <h3>model.py</h3>
     <pre><code>from pydantic import BaseModel
 
 class Product(BaseModel):
@@ -568,7 +568,7 @@ class Product(BaseModel):
     price: int
     tags: list[str]
 </code></pre>
-    app.py
+    <h3>app.py</h3>
     <pre><code>
 @app.post("/product")
 def create_product(product: Product):
@@ -817,7 +817,7 @@ def create_product(product: Product):
     def contacts(request: Request):
         return html.TemplateResponse(request, "contacts.html")
     </code></pre>
-    # файл html/contacts.html:
+    <h3>html/contacts.html:</h3>
     <pre><code>
     # &lt;!doctype html&gt;
     # &lt;html&gt;&lt;body&gt;&lt;h1&gt;Контакты&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
@@ -863,7 +863,7 @@ def create_product(product: Product):
             "want_cat": True
         })
    </code></pre>
-    index.html
+   <h3>index.html</h3> 
             <pre><code>
     &lt;!DOCTYPE html&gt;
     &lt;html lang="en"&gt;
@@ -909,7 +909,7 @@ def create_product(product: Product):
             "show_result": True
         })
     </code></pre>
-    html/marks.html
+    <h3>html/marks.html</h3>
     <pre><code>
     # html/marks.html
     # &lt;h1&gt;{{ title }}&lt;/h1&gt;
@@ -957,7 +957,7 @@ def create_product(product: Product):
             <p>В этой теме страница начинает вести себя динамически: HTML меняется в зависимости от данных.</p>
         
             <h3>Пример кода</h3>
-        app.py
+        <h3>app.py</h3>
             <pre><code>from fastapi import FastAPI, Request
         from fastapi.templating import Jinja2Templates
         
@@ -989,7 +989,7 @@ def create_product(product: Product):
                 "students": students
             })
                 </code></pre>
-        index.html
+        <h3>index.html</h3>
         <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
@@ -1042,7 +1042,7 @@ def create_product(product: Product):
             ]
             return html.TemplateResponse(request, "group.html", {"pupils": pupils})
                 </code></pre>
-    html/group.html
+    <h3>html/group.html</h3>
         <pre><code>
         # html/group.html
         # &lt;ul&gt;
@@ -1110,7 +1110,7 @@ def create_product(product: Product):
                 "want_cat": want_cat == "yes"
             })
                 </code></pre>
-    form.html
+    <h3>form.html</h3>
         <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
@@ -1129,7 +1129,7 @@ def create_product(product: Product):
         &lt;/body&gt;
         &lt;/html&gt;
          </code></pre>
-    index.html
+    <h3>index.html</h3>
         <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
@@ -1184,7 +1184,7 @@ def create_product(product: Product):
                 "good": rating >= 4
             })
                 </code></pre>
-                    feedback.html
+                    <h3>feedback.html</h3>
         <pre><code>
         # feedback.html
         # &lt;form action="/feedback" method="post"&gt;
@@ -1277,7 +1277,7 @@ def create_product(product: Product):
             kids.pop(index)
             return RedirectResponse("/")
           </code></pre>
-    form.html
+    <h3>form.html</h3>
         <pre><code>
             
         &lt;!DOCTYPE html&gt;
@@ -1297,7 +1297,7 @@ def create_product(product: Product):
         &lt;/body&gt;
         &lt;/html&gt;
          </code></pre>
-    index.html
+    <h3>index.html</h3>
         <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
@@ -1429,7 +1429,7 @@ def create_product(product: Product):
             response.set_cookie(key="color", value=color)
             return response
          </code></pre>
-    index.html
+    <h3>index.html</h3>
         <pre><code>
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
@@ -1483,7 +1483,7 @@ def create_product(product: Product):
             response.set_cookie("language", language)
             return response
          </code></pre>
-    index.html
+    <h3>index.html</h3>
         <pre><code>
         # HTML:
         # Ваш язык: {{ language }}
@@ -1579,7 +1579,7 @@ def create_product(product: Product):
                 response.set_cookie("login", login)
                 return response
              </code></pre>
-    index.html
+    <h3>index.html</h3>
         <pre><code>
             &lt;!DOCTYPE html&gt;
             &lt;html lang="en"&gt;
@@ -1598,7 +1598,7 @@ def create_product(product: Product):
             &lt;/body&gt;
             &lt;/html&gt;
              </code></pre>
-    login.html
+   <h3>login.html</h3> 
         <pre><code>
             &lt;!DOCTYPE html&gt;
             &lt;html lang="en"&gt;
@@ -1615,7 +1615,7 @@ def create_product(product: Product):
             &lt;/body&gt;
             &lt;/html&gt;
              </code></pre>
-    register.html
+    <h3>register.html</h3>
         <pre><code>
             &lt;!DOCTYPE html&gt;
             &lt;html lang="en"&gt;
